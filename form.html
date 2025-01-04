@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            border-radius: 10px;
+            background-color: green;
+            ;
+            color: white;
+            font-weight: bold;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            background-color: pink;
+        }
+
+        input,
+        select {
+            border: 2px solid black;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        input[type="checkbox"] {
+            width: auto;
+        }
+
+        input[type="submit"] {
+            width: auto;
+            align-self: flex-start;
+            padding: 5px 10px;
+            border: green;
+        }
+
+        input[type='submit']:hover {
+            background-color: #E16A54;
+            height: 30px;
+            width: 70px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bolds;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" id="user_form">
+        <label for="fname">Name</label>
+        <input type="text" name="fname" id="fname" placeholder="Enter your name">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lname" placeholder="Enter your last name">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+        <label for="address">Home Address</label>
+        <input type="text" id="address" name="address" placeholder="Enter your home address">
+        <label for="age">Age</label>
+        <input type="number" name="age" id="age" placeholder="Enter your age">
+        <label for="gender">Gender</label>
+        <select name="gender" id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <div> <label for="terms">Accept the terms and conditions</label>
+            <input type="checkbox" id="terms" name="terms">
+        </div>
+        <input type="submit" value="Submit" id="submit">
+    </form>
+</body>
+<script>
+    const form = document.getElementById('user_form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        alert('form is not submitted');
+        const age = document.getElementById('age').value;
+        const gender = document.getElementById('gender').value;
+        const password = document.getElementById('password').value;
+        const terms = document.getElementById('terms').checked;
+        // Dynamic Validation Checks// 
+        if (age < 18) {
+            alert('you are below the age limit');
+            return;
+        }
+
+        if (password.length < 6) {
+            alert('Enter your valid password');
+            return;
+
+        }
+        if (!gender) {
+            alert('Please Select a gender');
+            return;
+
+        }
+
+        if (!terms) {
+            alert('You must accept the terms and conditions');
+            return;
+
+        }
+
+        // if validation is complete then submit the form //
+        form.submit();
+
+    })
+</script>
+
+</html>
